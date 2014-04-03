@@ -22,10 +22,10 @@
 		9B4B5CA518ED638F005A27AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4B5C8418ED638E005A27AA /* UIKit.framework */; };
 		9B4B5CAD18ED638F005A27AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B5CAB18ED638F005A27AA /* InfoPlist.strings */; };
 		9B4B5CAF18ED638F005A27AA /* ZLMulticastAgentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CAE18ED638F005A27AA /* ZLMulticastAgentTests.m */; };
-		9B4B5CBB18ED63EE005A27AA /* ZLMulticastAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CBA18ED63EE005A27AA /* ZLMulticastAgent.m */; };
-		9B4B5CBC18ED63EE005A27AA /* ZLMulticastAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CBA18ED63EE005A27AA /* ZLMulticastAgent.m */; };
 		9B4B5CBF18ED6555005A27AA /* ZLMulticastAgentDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CBE18ED6555005A27AA /* ZLMulticastAgentDemo.m */; };
 		9B4B5CC018ED6555005A27AA /* ZLMulticastAgentDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CBE18ED6555005A27AA /* ZLMulticastAgentDemo.m */; };
+		9B4B5CC418ED9F5A005A27AA /* ZLMulticastAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CC318ED9F5A005A27AA /* ZLMulticastAgent.m */; };
+		9B4B5CC518ED9F5A005A27AA /* ZLMulticastAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B5CC318ED9F5A005A27AA /* ZLMulticastAgent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +59,10 @@
 		9B4B5CAA18ED638F005A27AA /* ZLMulticastAgentTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZLMulticastAgentTests-Info.plist"; sourceTree = "<group>"; };
 		9B4B5CAC18ED638F005A27AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B4B5CAE18ED638F005A27AA /* ZLMulticastAgentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLMulticastAgentTests.m; sourceTree = "<group>"; };
-		9B4B5CB918ED63EE005A27AA /* ZLMulticastAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLMulticastAgent.h; sourceTree = "<group>"; };
-		9B4B5CBA18ED63EE005A27AA /* ZLMulticastAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLMulticastAgent.m; sourceTree = "<group>"; };
 		9B4B5CBD18ED6555005A27AA /* ZLMulticastAgentDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLMulticastAgentDemo.h; sourceTree = "<group>"; };
 		9B4B5CBE18ED6555005A27AA /* ZLMulticastAgentDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLMulticastAgentDemo.m; sourceTree = "<group>"; };
+		9B4B5CC218ED9F5A005A27AA /* ZLMulticastAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLMulticastAgent.h; sourceTree = "<group>"; };
+		9B4B5CC318ED9F5A005A27AA /* ZLMulticastAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLMulticastAgent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +130,8 @@
 				9B4B5C9918ED638E005A27AA /* ZLViewController.m */,
 				9B4B5CBD18ED6555005A27AA /* ZLMulticastAgentDemo.h */,
 				9B4B5CBE18ED6555005A27AA /* ZLMulticastAgentDemo.m */,
+				9B4B5CC118ED9F5A005A27AA /* ZLMulticastAgentSources */,
 				9B4B5C9B18ED638E005A27AA /* Images.xcassets */,
-				9B4B5CB818ED63EE005A27AA /* ZLMulticastAgent */,
 				9B4B5C8718ED638E005A27AA /* Supporting Files */,
 			);
 			path = ZLMulticastAgent;
@@ -166,13 +166,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B4B5CB818ED63EE005A27AA /* ZLMulticastAgent */ = {
+		9B4B5CC118ED9F5A005A27AA /* ZLMulticastAgentSources */ = {
 			isa = PBXGroup;
 			children = (
-				9B4B5CB918ED63EE005A27AA /* ZLMulticastAgent.h */,
-				9B4B5CBA18ED63EE005A27AA /* ZLMulticastAgent.m */,
+				9B4B5CC218ED9F5A005A27AA /* ZLMulticastAgent.h */,
+				9B4B5CC318ED9F5A005A27AA /* ZLMulticastAgent.m */,
 			);
-			path = ZLMulticastAgent;
+			path = ZLMulticastAgentSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,11 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4B5CBB18ED63EE005A27AA /* ZLMulticastAgent.m in Sources */,
 				9B4B5CBF18ED6555005A27AA /* ZLMulticastAgentDemo.m in Sources */,
 				9B4B5C9118ED638E005A27AA /* ZLAppDelegate.m in Sources */,
 				9B4B5C8D18ED638E005A27AA /* main.m in Sources */,
 				9B4B5C9A18ED638E005A27AA /* ZLViewController.m in Sources */,
+				9B4B5CC418ED9F5A005A27AA /* ZLMulticastAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,9 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4B5CBC18ED63EE005A27AA /* ZLMulticastAgent.m in Sources */,
 				9B4B5CC018ED6555005A27AA /* ZLMulticastAgentDemo.m in Sources */,
 				9B4B5CAF18ED638F005A27AA /* ZLMulticastAgentTests.m in Sources */,
+				9B4B5CC518ED9F5A005A27AA /* ZLMulticastAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
