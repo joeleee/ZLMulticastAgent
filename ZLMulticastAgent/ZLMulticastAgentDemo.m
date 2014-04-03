@@ -26,7 +26,7 @@
 {
     if (self = [super init]) {
         // You should register your delegate key and method
-        [self setListenerKeyToSelecterDict:@{@"delegateKey0":NSStringFromSelector(@selector(method0)),
+        [self setListenerIDToSelecterDict:@{@"delegateKey0":NSStringFromSelector(@selector(method0)),
                                              @"delegateKey1":NSStringFromSelector(@selector(method1)),
                                              @"delegateKey2":NSStringFromSelector(@selector(method2)),
                                              @"delegateKey3":NSStringFromSelector(@selector(method3))}];

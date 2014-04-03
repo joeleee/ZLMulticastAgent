@@ -9,6 +9,7 @@
 
 #pragma mark - MAListenerPackingObject
 
+// A intenal class of Multicast-Agent to packing the listener
 @interface MAListenerPackingObject : NSObject
 
 @property (nonatomic, weak) id listener;
@@ -34,19 +35,19 @@
 @interface ZLMulticastAgent ()
 
 @property (nonatomic, strong) NSDictionary *listeners;
-@property (nonatomic, strong) NSDictionary *listenerKeyToSelector;
+@property (nonatomic, strong) NSDictionary *listenerIDToSelector;
 
 @end
 
 @implementation ZLMulticastAgent
 
-- (void)setListenerKeyToSelecterDict:(NSDictionary *)listenerKeyToSelector
+- (void)setListenerIDToSelecterDict:(NSDictionary *)listenerIDToSelector
 {
     [self removeAllListeners];
-    self.listenerKeyToSelector = listenerKeyToSelector;
+    self.listenerIDToSelector = listenerIDToSelector;
 
     NSMutableDictionary *listeners = [NSMutableDictionary dictionary];
-    for (NSString *key in [listenerKeyToSelector allKeys]) {
+    for (NSString *key in [listenerIDToSelector allKeys]) {
         [listeners setObject:[NSMutableSet set] forKey:key];
     }
     self.listeners = listeners;
@@ -54,10 +55,12 @@
 
 - (void)listenersForKey:(NSString *)key withBlock:(void(^)(id listener))block
 {
-    NSMutableSet *listenerSet = [_listeners objectForKey:key];
+    NSMutableSet *listenerSet = [self.listeners objectForKey:key];
     for (MAListenerPackingObject *listenerObject in listenerSet) {
         NSAssert(listenerObject.listener, @"Do you forgot to remove listener when you dealloc the delegate?");
-        EXECUTE_BLOCK_SAFELY(block,listenerObject.listener);
+        if (block) {
+            block(listenerObject.listener);
+        }
     }
 }
 
@@ -75,8 +78,8 @@
 {
     BOOL result = NO;
 
-    for (NSString *key in [_listenerKeyToSelector allKeys]) {
-        NSSet *listenerSet = [NSSet setWithSet:[_listeners objectForKey:key]];
+    for (NSString *key in [self.listenerIDToSelector allKeys]) {
+        NSSet *listenerSet = [NSSet setWithSet:[self.listeners objectForKey:key]];
         for (MAListenerPackingObject *listenerObject in listenerSet) {
             if (listenerObject.listener == listener) {
                 result = [self removeListenerPackingObject:listenerObject];
@@ -96,13 +99,13 @@
 {
     BOOL result = NO;
 
-    for (NSString *key in [_listenerKeyToSelector allKeys]) {
-        NSString *selectorName = [_listenerKeyToSelector objectForKey:key];
+    for (NSString *key in [self.listenerIDToSelector allKeys]) {
+        NSString *selectorName = [self.listenerIDToSelector objectForKey:key];
         if ([packingObject.listener respondsToSelector:NSSelectorFromString(selectorName)]) {
             if (!result) {
                 result = YES;
             }
-            [[_listeners objectForKey:key] addObject:packingObject];
+            [[self.listeners objectForKey:key] addObject:packingObject];
         }
     }
     return result;
@@ -112,10 +115,10 @@
 {
     BOOL result = NO;
 
-    for (NSString *key in [_listenerKeyToSelector allKeys]) {
-        if ([[_listeners objectForKey:key] containsObject:packingObject]) {
+    for (NSString *key in [self.listenerIDToSelector allKeys]) {
+        if ([[self.listeners objectForKey:key] containsObject:packingObject]) {
             result = YES;
-            [[_listeners objectForKey:key] removeObject:packingObject];
+            [[self.listeners objectForKey:key] removeObject:packingObject];
         }
     }
     return result;
@@ -124,8 +127,8 @@
 - (void)removeAllListeners
 {
     NSMutableSet *listenerSet = [NSMutableSet set];
-    for (NSString *key in [_listenerKeyToSelector allKeys]) {
-        [listenerSet addObjectsFromArray:[_listeners objectForKey:key]];
+    for (NSString *key in [self.listenerIDToSelector allKeys]) {
+        [listenerSet addObjectsFromArray:[self.listeners objectForKey:key]];
     }
 
     for (id listener in listenerSet) {

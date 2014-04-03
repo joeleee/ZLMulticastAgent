@@ -7,24 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef MAGLOBALDEFINITIONS_H
-  #define MAGLOBALDEFINITIONS_H
-
-  #define EXECUTE_BLOCK_SAFELY(block, ...) { \
-        if (block) {                         \
-            block(__VA_ARGS__);              \
-        }                                    \
-}
-#endif /* ifndef MAGLOBALDEFINITIONS_H */
-
 @interface ZLMulticastAgent : NSObject
 
-- (void)setListenerKeyToSelecterDict:(NSDictionary *)listenerKeyToSelector;
+// Set the listenerID with protocol-selecter Key-Values
+- (void)setListenerIDToSelecterDict:(NSDictionary *)listenerIDToSelector;
 
+// Get all the listeners of the key with the block
 - (void)listenersForKey:(NSString *)key withBlock:(void (^)(id listener))block;
 
+// Add a listener to this Multicast-Agent
 - (BOOL)addListener:(id)listener;
 
+// Remove a listener to this Multicast-Agent
 - (BOOL)removeListener:(id)listener;
 
 @end
