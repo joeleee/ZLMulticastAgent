@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform              = :ios, '5.0'
   s.ios.deployment_target = '5.0'
 
-  s.source       = { :git => "http://EXAMPLE/ZLMulticastAgent.git", :tag => "v0.0.1" }
+  s.source       = { :git => "https://github.com/zhuocheng/ZLMulticastAgent.git", :tag => "v0.0.1" }
   s.source_files = 'ZLMulticastAgent/ZLMulticastAgentSources/*.{h,m}'
   s.requires_arc = true
 
